@@ -28,17 +28,24 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        animator.SetFloat("Vertical", moveDirection.magnitude);
+        animator.speed = currentSpeed;
         if (moveDirection.magnitude > moveTrashold)
         {
-            controller.Move(moveDirection * currentSpeed * Time.deltaTime);
+            //controller.Move(moveDirection * currentSpeed * Time.deltaTime);
             transform.rotation = Quaternion.LookRotation(moveDirection);
         }
     }
 
+    /*void OnAnimatorMove()
+    {
+        Debug.Log(animator.deltaPosition);
+        transform.position += animator.deltaPosition;
+    }*/
+
     public void Vertical(InputAction.CallbackContext context)
     {
         moveDirection.z = context.ReadValue<float>();
-        animator.SetFloat("Vertical", context.ReadValue<float>());
     }
 
     public void Horizontal(InputAction.CallbackContext context)

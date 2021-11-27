@@ -369,8 +369,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: -0, y: -0.5293541, z: -0, w: -0.84840107}
-  m_LocalPosition: {x: 0, y: 8, z: -7}
+  m_LocalRotation: {x: 0.3802329, y: 0, z: 0, w: 0.92489076}
+  m_LocalPosition: {x: -0.003561551, y: 9, z: -6.9982023}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -407,6 +407,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be5318ddcbbae846be1d50341b10852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1155034113
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155034109}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 505dd6dcca816e844b3f304148113f0d, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7ec2afff01badf647813abab51ab0ab2, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!143 &1155034114
 CharacterController:
   m_ObjectHideFlags: 0
@@ -416,7 +435,7 @@ CharacterController:
   m_GameObject: {fileID: 1155034109}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
@@ -553,6 +572,10 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1896276569065925161, guid: e415d2a8c4ed5ad45b66d6cea04b03d1, type: 3}
+      propertyPath: moveSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1896276569065925161, guid: e415d2a8c4ed5ad45b66d6cea04b03d1, type: 3}
       propertyPath: moveTrashold
       value: 0.1
       objectReference: {fileID: 0}
@@ -604,5 +627,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5420777968875653159, guid: e415d2a8c4ed5ad45b66d6cea04b03d1, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5420777968875653159, guid: e415d2a8c4ed5ad45b66d6cea04b03d1, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5420777968875653159, guid: e415d2a8c4ed5ad45b66d6cea04b03d1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e415d2a8c4ed5ad45b66d6cea04b03d1, type: 3}
