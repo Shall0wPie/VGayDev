@@ -27,21 +27,19 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Update()
-    {
-        animator.SetFloat("Vertical", moveDirection.magnitude);
+    {        
+        animator.SetFloat("Vertical", moveDirection.magnitude, 0.1f, Time.deltaTime);
         animator.speed = currentSpeed;
-        if (moveDirection.magnitude > moveTrashold)
+
+        if (Vector3.Angle(moveDirection, transform.forward) > 130f && !animator.GetBool("LockInput"))
         {
-            //controller.Move(moveDirection * currentSpeed * Time.deltaTime);
+            animator.SetTrigger("Turn");
+        }
+        else if (moveDirection.magnitude > moveTrashold && !animator.GetBool("LockInput"))
+        {
             transform.rotation = Quaternion.LookRotation(moveDirection);
         }
     }
-
-    /*void OnAnimatorMove()
-    {
-        Debug.Log(animator.deltaPosition);
-        transform.position += animator.deltaPosition;
-    }*/
 
     public void Vertical(InputAction.CallbackContext context)
     {

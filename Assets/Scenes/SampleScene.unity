@@ -573,7 +573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1896276569065925161, guid: e415d2a8c4ed5ad45b66d6cea04b03d1, type: 3}
       propertyPath: moveSpeed
-      value: 1
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 1896276569065925161, guid: e415d2a8c4ed5ad45b66d6cea04b03d1, type: 3}
       propertyPath: moveTrashold
