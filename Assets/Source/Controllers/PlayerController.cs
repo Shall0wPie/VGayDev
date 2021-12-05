@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 moveDirection;
     private float currentSpeed;
+    private bool isSprinting;
+    private bool isInputLocked;
 
     private void Awake()
     {
@@ -27,10 +29,17 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Update()
-    {
-        if (moveDirection.magnitude > moveTrashold)
+    {        
+        animator.SetFloat("Vertical", moveDirection.magnitude, 0.1f, Time.deltaTime);
+        animator.speed = currentSpeed;
+        isInputLocked = animator.GetBool("LockInput");
+
+        if (Vector3.Angle(moveDirection, transform.forward) > 130f && !isInputLocked && isSprinting)
         {
-            controller.Move(moveDirection * currentSpeed * Time.deltaTime);
+            animator.SetTrigger("Turn");
+        }
+        else if (moveDirection.magnitude > moveTrashold && !isInputLocked)
+        {
             transform.rotation = Quaternion.LookRotation(moveDirection);
         }
     }
@@ -38,7 +47,6 @@ public class PlayerController : MonoBehaviour
     public void Vertical(InputAction.CallbackContext context)
     {
         moveDirection.z = context.ReadValue<float>();
-        animator.SetFloat("Vertical", context.ReadValue<float>());
     }
 
     public void Horizontal(InputAction.CallbackContext context)
@@ -52,10 +60,20 @@ public class PlayerController : MonoBehaviour
         {
             case InputActionPhase.Started:
                 currentSpeed = moveSpeed * sprintMultiplier;
+                isSprinting = true;
                 break;
             case InputActionPhase.Canceled:
                 currentSpeed = moveSpeed;
+                isSprinting = false;
                 break;
+        }
+    }
+
+    public void Attack(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started && !isInputLocked)
+        {
+            animator.SetTrigger("Attack");
         }
     }
 }
