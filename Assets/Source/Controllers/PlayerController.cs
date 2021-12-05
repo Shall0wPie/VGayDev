@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 moveDirection;
     private float currentSpeed;
+    private bool isSprinting;
+    private bool isInputLocked;
 
     private void Awake()
     {
@@ -30,12 +32,13 @@ public class PlayerController : MonoBehaviour
     {        
         animator.SetFloat("Vertical", moveDirection.magnitude, 0.1f, Time.deltaTime);
         animator.speed = currentSpeed;
+        isInputLocked = animator.GetBool("LockInput");
 
-        if (Vector3.Angle(moveDirection, transform.forward) > 130f && !animator.GetBool("LockInput"))
+        if (Vector3.Angle(moveDirection, transform.forward) > 130f && !isInputLocked && isSprinting)
         {
             animator.SetTrigger("Turn");
         }
-        else if (moveDirection.magnitude > moveTrashold && !animator.GetBool("LockInput"))
+        else if (moveDirection.magnitude > moveTrashold && !isInputLocked)
         {
             transform.rotation = Quaternion.LookRotation(moveDirection);
         }
@@ -57,10 +60,20 @@ public class PlayerController : MonoBehaviour
         {
             case InputActionPhase.Started:
                 currentSpeed = moveSpeed * sprintMultiplier;
+                isSprinting = true;
                 break;
             case InputActionPhase.Canceled:
                 currentSpeed = moveSpeed;
+                isSprinting = false;
                 break;
+        }
+    }
+
+    public void Attack(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started && !isInputLocked)
+        {
+            animator.SetTrigger("Attack");
         }
     }
 }

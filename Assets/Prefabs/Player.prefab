@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1896276569065925161}
   - component: {fileID: 1896276569065925160}
   - component: {fileID: 1155034114}
+  - component: {fileID: 1155034113}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -46,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4be5318ddcbbae846be1d50341b10852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6.5
-  sprintMultiplier: 1.6
-  moveTrashold: 0.2
+  moveSpeed: 1.3
+  sprintMultiplier: 1.3
+  moveTrashold: 0.1
 --- !u!114 &1896276569065925160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +79,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1896276569065925161}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: Movement
+        m_MethodName: Horizontal
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -94,6 +95,22 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1896276569065925161}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Vertical
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c0c7b294-bc6e-44b3-ad50-00c036776955
+    m_ActionName: GamePlay/Vertical[/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/up]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1896276569065925161}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: Sprint
         m_Mode: 0
         m_Arguments:
@@ -105,7 +122,23 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: 31f5e28b-6ced-4907-bad4-5e97011af503
-    m_ActionName: GamePlay/Sprint[/Keyboard/shift]
+    m_ActionName: GamePlay/Sprint[/Keyboard/shift,/XInputControllerWindows/rightStickPress]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1896276569065925161}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: Attack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 94cc06b9-efe9-4210-81c7-1edd89368c09
+    m_ActionName: GamePlay/Attack[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: MouseKeyboard
   m_DefaultActionMap: GamePlay
@@ -120,7 +153,7 @@ CharacterController:
   m_GameObject: {fileID: 1896276569065926100}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
@@ -129,6 +162,25 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &1155034113
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896276569065926100}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 505dd6dcca816e844b3f304148113f0d, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7ec2afff01badf647813abab51ab0ab2, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 1
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1896276570202994102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -188,7 +240,8 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 7ec2afff01badf647813abab51ab0ab2, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: 505dd6dcca816e844b3f304148113f0d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 505dd6dcca816e844b3f304148113f0d, type: 3}
 --- !u!4 &2151124144360854109 stripped
 Transform:
